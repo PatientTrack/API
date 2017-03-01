@@ -29,3 +29,19 @@ textarea {
         padding: 0;
     }
 }
+
+.txt {
+    height: 150px;
+}
+
+.calm {
+    background:#11c1f3;
+}
+
+.balanced {
+    background:#33cd5f;    
+}
+
+.center {
+    text-align: center;
+}

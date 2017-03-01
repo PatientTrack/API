@@ -1,40 +1,39 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="PatientTrackAPI._Default" %>
+﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="PatientTrackAPI._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <div class="jumbotron calm center">
+        <h1>PatientTrack</h1>
+        <p class="lead">Because you care, even when you're not there.</p>
     </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
+    <div class="row center">
+        <p>
+            Wandering is a significant danger to people who suffer from Dementia. 
+            PatientTrack enables you to keep an eye on your loved ones, no matter where you, or they, are.
+        </p>
+        <p>
+            Free. Ad-Free. Forever.
+        </p>
+    </div>
+
+    <div class="row center">
+        <div class="col-md-4 txt balanced">
+            <h2>What does it do?</h2>
             <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            </p>
-            <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
+                The patient app allows the person with dementia to navigate home at the click of a button!
             </p>
         </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
+        <div class="col-md-4 txt calm">
+            <h2>What is PatientTrack?</h2>
             <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
+                PatientTrack is a duo of free apps, available on Android, used by people with Dementia and their carers.
             </p>
+        </div>        
+        <div class="col-md-4 txt balanced">
+            <h2>What does it do?</h2>
             <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
+                The carer app allows the carer to view the patient's precise location (updated every 5m) to ensure they are in a safe location.
             </p>
         </div>
     </div>

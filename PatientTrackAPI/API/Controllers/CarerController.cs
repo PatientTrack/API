@@ -16,26 +16,38 @@ namespace API.Controllers
         [Route("api/carers")]
         public HttpResponseMessage Get()
         {
-            var carers = CarerModel.GetAllCarers();
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, carers);
+            List<Carer> carers = CarerModel.GetAllCarers();
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.NotFound);
+            if (carers != null)
+            {
+                response = Request.CreateResponse(HttpStatusCode.OK, carers);
+            }            
             return response;
         }
 
         // GET api/carer/5
-        [Route("api/carer/{id?}")]
+        [Route("api/carers/{id?}")]
         public HttpResponseMessage Get(int id)
         {
-            var carers = CarerModel.GetCarer(id);
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, carers);
+            Carer carers = CarerModel.GetCarer(id);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.NotFound);
+            if (carers != null)
+            {
+                response = Request.CreateResponse(HttpStatusCode.OK, carers);
+            }
             return response;
         }
 
         // GET api/carer/John
-        [Route("api/carer/{name:alpha}")]
+        [Route("api/carers/{name:alpha}")]
         public HttpResponseMessage Get(string name)
         {
-            var carers = CarerModel.SearchCarerByName(name);
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, carers);
+            Carer carers = CarerModel.SearchCarerByName(name);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.NotFound);
+            if (carers != null)
+            {
+                response = Request.CreateResponse(HttpStatusCode.OK, carers);
+            }
             return response;
         }
 
@@ -43,8 +55,12 @@ namespace API.Controllers
         [Route("api/carers")]
         public HttpResponseMessage Post(Carer c)
         {
-            var carers = CarerModel.InsertCarer(c);
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, carers);
+            List<Carer> carers = CarerModel.InsertCarer(c);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.NotFound);
+            if (carers != null)
+            {
+                response = Request.CreateResponse(HttpStatusCode.OK, carers);
+            }
             return response;
         }
 
@@ -52,8 +68,12 @@ namespace API.Controllers
         [Route("api/carers")]
         public HttpResponseMessage Put(Carer c)
         {
-            var carers = CarerModel.UpdateCarer(c);
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, carers);
+            List<Carer> carers = CarerModel.UpdateCarer(c);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.NotFound);
+            if (carers != null)
+            {
+                response = Request.CreateResponse(HttpStatusCode.OK, carers);
+            }
             return response;
         }
 
@@ -61,8 +81,12 @@ namespace API.Controllers
         [Route("api/carers")]
         public HttpResponseMessage Delete(Carer c)
         {
-            var carers = CarerModel.DeleteCarer(c);
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, carers);
+            List<Carer> carers = CarerModel.DeleteCarer(c);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.NotFound);
+            if (carers != null)
+            {
+                response = Request.CreateResponse(HttpStatusCode.OK, carers);
+            }
             return response;
         }
     }

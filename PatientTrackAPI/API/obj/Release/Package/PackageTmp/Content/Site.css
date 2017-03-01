@@ -15,3 +15,19 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.center {
+    text-align: center;
+}
+
+.txt {
+    height: 150px;
+}
+
+.calm {
+    background: #11c1f3;
+}
+
+.balanced {
+    background: #33cd5f;
+}
