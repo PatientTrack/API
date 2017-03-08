@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PatientTrackDBModelStoreContainer" CdmEntityContainer="PatientTrackDBEntities">
+    <EntitySetMapping Name="Carers">
+      <EntityTypeMapping TypeName="PatientTrackDBModel.Carer">
+        <MappingFragment StoreEntitySet="Carer">
+          <ScalarProperty Name="CarerID" ColumnName="CarerID" />
+          <ScalarProperty Name="CarerFName" ColumnName="CarerFName" />
+          <ScalarProperty Name="CarerSName" ColumnName="CarerSName" />
+          <ScalarProperty Name="CarerEmail" ColumnName="CarerEmail" />
+          <ScalarProperty Name="CarerPwd" ColumnName="CarerPwd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="PatientTrackDBModel.Location">
+        <MappingFragment StoreEntitySet="Location">
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="TimeLocated" ColumnName="TimeLocated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patients">
+      <EntityTypeMapping TypeName="PatientTrackDBModel.Patient">
+        <MappingFragment StoreEntitySet="Patient">
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="PatientFName" ColumnName="PatientFName" />
+          <ScalarProperty Name="PatientSName" ColumnName="PatientSName" />
+          <ScalarProperty Name="PatientEmail" ColumnName="PatientEmail" />
+          <ScalarProperty Name="PatientPwd" ColumnName="PatientPwd" />
+          <ScalarProperty Name="PatientPostcode" ColumnName="PatientPostcode" />
+          <ScalarProperty Name="PatientCode" ColumnName="PatientCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CarerPatient" TypeName="PatientTrackDBModel.CarerPatient" StoreEntitySet="CarerPatient">
+      <EndProperty Name="Carer">
+        <ScalarProperty Name="CarerID" ColumnName="CarerID" />
+      </EndProperty>
+      <EndProperty Name="Patient">
+        <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

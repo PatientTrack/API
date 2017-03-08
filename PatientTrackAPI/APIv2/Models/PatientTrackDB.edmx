@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PatientTrackDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Carer">
+          <Key>
+            <PropertyRef Name="CarerID" />
+          </Key>
+          <Property Name="CarerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CarerFName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CarerSName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CarerEmail" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="CarerPwd" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CarerPatient">
+          <Key>
+            <PropertyRef Name="CarerID" />
+            <PropertyRef Name="PatientID" />
+          </Key>
+          <Property Name="CarerID" Type="int" Nullable="false" />
+          <Property Name="PatientID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientID" Type="int" Nullable="false" />
+          <Property Name="Longitude" Type="float" Nullable="false" />
+          <Property Name="Latitude" Type="float" Nullable="false" />
+          <Property Name="TimeLocated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="PatientID" />
+          </Key>
+          <Property Name="PatientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientFName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PatientSName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PatientEmail" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="PatientPwd" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="PatientPostcode" Type="varchar" MaxLength="10" />
+          <Property Name="PatientCode" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__CarerPati__Carer__5CD6CB2B">
+          <End Role="Carer" Type="Self.Carer" Multiplicity="1" />
+          <End Role="CarerPatient" Type="Self.CarerPatient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carer">
+              <PropertyRef Name="CarerID" />
+            </Principal>
+            <Dependent Role="CarerPatient">
+              <PropertyRef Name="CarerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CarerPati__Patie__5DCAEF64">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="CarerPatient" Type="Self.CarerPatient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientID" />
+            </Principal>
+            <Dependent Role="CarerPatient">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Location__Patien__59063A47">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PatientTrackDBModelStoreContainer">
+          <EntitySet Name="Carer" EntityType="Self.Carer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CarerPatient" EntityType="Self.CarerPatient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CarerPati__Carer__5CD6CB2B" Association="Self.FK__CarerPati__Carer__5CD6CB2B">
+            <End Role="Carer" EntitySet="Carer" />
+            <End Role="CarerPatient" EntitySet="CarerPatient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CarerPati__Patie__5DCAEF64" Association="Self.FK__CarerPati__Patie__5DCAEF64">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="CarerPatient" EntitySet="CarerPatient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Location__Patien__59063A47" Association="Self.FK__Location__Patien__59063A47">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PatientTrackDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Carer">
+          <Key>
+            <PropertyRef Name="CarerID" />
+          </Key>
+          <Property Name="CarerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CarerFName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CarerSName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CarerEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CarerPwd" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Patients" Relationship="Self.CarerPatient" FromRole="Carer" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientID" Type="Int32" Nullable="false" />
+          <Property Name="Longitude" Type="Double" Nullable="false" />
+          <Property Name="Latitude" Type="Double" Nullable="false" />
+          <Property Name="TimeLocated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Location__Patien__59063A47" FromRole="Location" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="PatientID" />
+          </Key>
+          <Property Name="PatientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientFName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PatientSName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PatientEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PatientPwd" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PatientPostcode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PatientCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Locations" Relationship="Self.FK__Location__Patien__59063A47" FromRole="Patient" ToRole="Location" />
+          <NavigationProperty Name="Carers" Relationship="Self.CarerPatient" FromRole="Patient" ToRole="Carer" />
+        </EntityType>
+        <Association Name="FK__Location__Patien__59063A47">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CarerPatient">
+          <End Role="Carer" Type="Self.Carer" Multiplicity="*" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="PatientTrackDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Carers" EntityType="Self.Carer" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="Patients" EntityType="Self.Patient" />
+          <AssociationSet Name="FK__Location__Patien__59063A47" Association="Self.FK__Location__Patien__59063A47">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="CarerPatient" Association="Self.CarerPatient">
+            <End Role="Carer" EntitySet="Carers" />
+            <End Role="Patient" EntitySet="Patients" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PatientTrackDBModelStoreContainer" CdmEntityContainer="PatientTrackDBEntities">
+          <EntitySetMapping Name="Carers">
+            <EntityTypeMapping TypeName="PatientTrackDBModel.Carer">
+              <MappingFragment StoreEntitySet="Carer">
+                <ScalarProperty Name="CarerID" ColumnName="CarerID" />
+                <ScalarProperty Name="CarerFName" ColumnName="CarerFName" />
+                <ScalarProperty Name="CarerSName" ColumnName="CarerSName" />
+                <ScalarProperty Name="CarerEmail" ColumnName="CarerEmail" />
+                <ScalarProperty Name="CarerPwd" ColumnName="CarerPwd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="PatientTrackDBModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="TimeLocated" ColumnName="TimeLocated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="PatientTrackDBModel.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="PatientFName" ColumnName="PatientFName" />
+                <ScalarProperty Name="PatientSName" ColumnName="PatientSName" />
+                <ScalarProperty Name="PatientEmail" ColumnName="PatientEmail" />
+                <ScalarProperty Name="PatientPwd" ColumnName="PatientPwd" />
+                <ScalarProperty Name="PatientPostcode" ColumnName="PatientPostcode" />
+                <ScalarProperty Name="PatientCode" ColumnName="PatientCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CarerPatient" TypeName="PatientTrackDBModel.CarerPatient" StoreEntitySet="CarerPatient">
+            <EndProperty Name="Carer">
+              <ScalarProperty Name="CarerID" ColumnName="CarerID" />
+            </EndProperty>
+            <EndProperty Name="Patient">
+              <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

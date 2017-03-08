@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PatientTrackDBModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Carer">
+    <Key>
+      <PropertyRef Name="CarerID" />
+    </Key>
+    <Property Name="CarerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CarerFName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CarerSName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CarerEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CarerPwd" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Patients" Relationship="Self.CarerPatient" FromRole="Carer" ToRole="Patient" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientID" Type="Int32" Nullable="false" />
+    <Property Name="Longitude" Type="Double" Nullable="false" />
+    <Property Name="Latitude" Type="Double" Nullable="false" />
+    <Property Name="TimeLocated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Patient" Relationship="Self.FK__Location__Patien__59063A47" FromRole="Location" ToRole="Patient" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="PatientID" />
+    </Key>
+    <Property Name="PatientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientFName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PatientSName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PatientEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PatientPwd" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PatientPostcode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PatientCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Locations" Relationship="Self.FK__Location__Patien__59063A47" FromRole="Patient" ToRole="Location" />
+    <NavigationProperty Name="Carers" Relationship="Self.CarerPatient" FromRole="Patient" ToRole="Carer" />
+  </EntityType>
+  <Association Name="FK__Location__Patien__59063A47">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+    <End Role="Location" Type="Self.Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="PatientID" />
+      </Principal>
+      <Dependent Role="Location">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CarerPatient">
+    <End Role="Carer" Type="Self.Carer" Multiplicity="*" />
+    <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="PatientTrackDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Carers" EntityType="Self.Carer" />
+    <EntitySet Name="Locations" EntityType="Self.Location" />
+    <EntitySet Name="Patients" EntityType="Self.Patient" />
+    <AssociationSet Name="FK__Location__Patien__59063A47" Association="Self.FK__Location__Patien__59063A47">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="Location" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="CarerPatient" Association="Self.CarerPatient">
+      <End Role="Carer" EntitySet="Carers" />
+      <End Role="Patient" EntitySet="Patients" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

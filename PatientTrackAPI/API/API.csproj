@@ -214,37 +214,38 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Carer.cs">
-      <DependentUpon>PatientTrackDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CarerController.cs" />
+    <Compile Include="Controllers\CarersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationsController.cs" />
+    <Compile Include="Controllers\PatientsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Location.cs">
-      <DependentUpon>PatientTrackDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\CarerModel.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Patient.cs">
+    <Compile Include="Models\Carer.cs">
       <DependentUpon>PatientTrackDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="PatientTrackDB.Context.cs">
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Location.cs">
+      <DependentUpon>PatientTrackDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Patient.cs">
+      <DependentUpon>PatientTrackDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PatientTrackDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PatientTrackDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="PatientTrackDB.cs">
+    <Compile Include="Models\PatientTrackDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PatientTrackDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="PatientTrackDB.Designer.cs">
+    <Compile Include="Models\PatientTrackDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PatientTrackDB.edmx</DependentUpon>
@@ -261,12 +262,12 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="PatientTrackDB.Context.tt">
+    <Content Include="Models\PatientTrackDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PatientTrackDB.edmx</DependentUpon>
       <LastGenOutput>PatientTrackDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="PatientTrackDB.tt">
+    <Content Include="Models\PatientTrackDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PatientTrackDB.edmx</DependentUpon>
       <LastGenOutput>PatientTrackDB.cs</LastGenOutput>
@@ -292,11 +293,11 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <EntityDeploy Include="PatientTrackDB.edmx">
+    <EntityDeploy Include="Models\PatientTrackDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PatientTrackDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="PatientTrackDB.edmx.diagram">
+    <Content Include="Models\PatientTrackDB.edmx.diagram">
       <DependentUpon>PatientTrackDB.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\PatientTrackAPI - Web Deploy.pubxml" />

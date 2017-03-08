@@ -9,6 +9,7 @@
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <NameOfLastUsedPublishProfile>PatientTrackAPI - Web Deploy</NameOfLastUsedPublishProfile>
+    <WebStackScaffolding_DbContextTypeFullName>API.Models.PatientTrackDBEntities2</WebStackScaffolding_DbContextTypeFullName>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
