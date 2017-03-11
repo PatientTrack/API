@@ -21,6 +21,11 @@ namespace APIv2
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
+                name: "LoginApi",
+                routeTemplate: "api/Login/{controller}"
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }

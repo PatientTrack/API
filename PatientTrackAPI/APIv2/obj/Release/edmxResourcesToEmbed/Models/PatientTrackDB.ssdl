@@ -6,7 +6,6 @@
     </Key>
     <Property Name="CarerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CarerFName" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="CarerSName" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="CarerEmail" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="CarerPwd" Type="varchar" MaxLength="30" Nullable="false" />
   </EntityType>
@@ -34,7 +33,6 @@
     </Key>
     <Property Name="PatientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PatientFName" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="PatientSName" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="PatientEmail" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="PatientPwd" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="PatientPostcode" Type="varchar" MaxLength="10" />

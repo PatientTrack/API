@@ -6,7 +6,6 @@
         <MappingFragment StoreEntitySet="Carer">
           <ScalarProperty Name="CarerID" ColumnName="CarerID" />
           <ScalarProperty Name="CarerFName" ColumnName="CarerFName" />
-          <ScalarProperty Name="CarerSName" ColumnName="CarerSName" />
           <ScalarProperty Name="CarerEmail" ColumnName="CarerEmail" />
           <ScalarProperty Name="CarerPwd" ColumnName="CarerPwd" />
         </MappingFragment>
@@ -28,7 +27,6 @@
         <MappingFragment StoreEntitySet="Patient">
           <ScalarProperty Name="PatientID" ColumnName="PatientID" />
           <ScalarProperty Name="PatientFName" ColumnName="PatientFName" />
-          <ScalarProperty Name="PatientSName" ColumnName="PatientSName" />
           <ScalarProperty Name="PatientEmail" ColumnName="PatientEmail" />
           <ScalarProperty Name="PatientPwd" ColumnName="PatientPwd" />
           <ScalarProperty Name="PatientPostcode" ColumnName="PatientPostcode" />

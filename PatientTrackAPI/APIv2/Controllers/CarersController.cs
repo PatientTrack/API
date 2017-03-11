@@ -16,6 +16,30 @@ namespace APIv2.Controllers
     {
         private PatientTrackDBEntities db = new PatientTrackDBEntities();
 
+        [Route("api/Carers/{loginEmail}/{loginPwd}")]
+        public IHttpActionResult Get(string loginEmail, string loginPwd)
+        {
+            Carer c = null;
+            try
+            {
+                c = (from car in db.Carers
+                           where car.CarerEmail == loginEmail
+                           && car.CarerPwd == loginPwd
+                           select car).First();
+            }
+            catch
+            {
+                return NotFound();
+            }
+
+            if (c == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(c);
+        }
+
         // GET: api/Carers
         public IQueryable<Carer> GetCarers()
         {
@@ -83,6 +107,23 @@ namespace APIv2.Controllers
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = carer.CarerID }, carer);
+        }
+
+        // POST: api/Login/Carers
+        [ResponseType(typeof(Carer))]
+        public IHttpActionResult LoginCarer(string email, string pwd)
+        {
+            Carer c = (from car in db.Carers
+                       where car.CarerEmail == email
+                       && car.CarerPwd == pwd
+                       select car).First();
+
+            if (c == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(c);
         }
 
         // DELETE: api/Carers/5

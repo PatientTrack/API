@@ -16,6 +16,30 @@ namespace APIv2.Controllers
     {
         private PatientTrackDBEntities db = new PatientTrackDBEntities();
 
+        [Route("api/Patients/{loginEmail}/{loginPwd}")]
+        public IHttpActionResult Get(string loginEmail, string loginPwd)
+        {
+            Patient p = null;
+            try
+            {
+                p = (from pat in db.Patients
+                     where pat.PatientEmail == loginEmail
+                     && pat.PatientPwd == loginPwd
+                     select pat).First();
+            }
+            catch
+            {
+                return NotFound();
+            }
+
+            if (p == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(p);
+        }
+
         // GET: api/Patients
         public IQueryable<Patient> GetPatients()
         {
