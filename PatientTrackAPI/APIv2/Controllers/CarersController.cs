@@ -91,7 +91,7 @@ namespace APIv2.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return GetCarer(id);
         }
 
         // POST: api/Carers
