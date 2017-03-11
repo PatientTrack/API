@@ -40,6 +40,29 @@ namespace APIv2.Controllers
             return Ok(p);
         }
 
+        [Route("api/Patients/code/{patientCode}")]
+        public IHttpActionResult GetByCode(string patientCode)
+        {
+            Patient p = null;
+            try
+            {
+                p = (from pat in db.Patients
+                     where pat.PatientCode == patientCode
+                     select pat).First();
+            }
+            catch
+            {
+                return NotFound();
+            }
+
+            if (p == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(p);
+        }
+
         // GET: api/Patients
         public IQueryable<Patient> GetPatients()
         {

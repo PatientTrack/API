@@ -59,6 +59,32 @@ namespace APIv2.Controllers
             return Ok(carer);
         }
 
+        // PUT: api/Carers/1/AddPatient/abc123
+        [Route("api/Carers/{carerID}/AddPatient/{patientCode}")]
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutCarerAddPatient(int carerID, string patientCode)
+        {
+            Patient patient = null;
+            //fetch the patient from database (by patientCode)
+            try
+            {
+                patient = db.Patients.FirstOrDefault(x => x.PatientCode == patientCode);
+            }
+            catch
+            {
+                return NotFound();
+            }
+            try
+            {
+                db.Database.ExecuteSqlCommand("INSERT INTO CarerPatient (CarerID, PatientID) VALUES (" + carerID + "," + patient.PatientID + ");");
+            }
+            catch
+            {
+                return BadRequest();
+            }
+            return Ok();
+        }
+
         // PUT: api/Carers/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutCarer(int id, Carer carer)
@@ -87,11 +113,17 @@ namespace APIv2.Controllers
                 }
                 else
                 {
-                    throw;
+                    return BadRequest();
                 }
             }
 
-            return GetCarer(id);
+            Carer car = db.Carers.Find(id);
+            if (car == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(carer);
         }
 
         // POST: api/Carers
