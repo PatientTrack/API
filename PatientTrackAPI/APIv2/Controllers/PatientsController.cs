@@ -117,6 +117,21 @@ namespace APIv2.Controllers
             return GetPatient(id);
         }
 
+        // POST: api/Patients/17/AddLocation/51.477156/0.001112
+        [Route("api/Patients/AddLocation/{patientID}")]
+        public IHttpActionResult PostLocation(int patientID, [FromBody]Location location)
+        {
+            try
+            {
+                db.Database.ExecuteSqlCommand("INSERT INTO Location (PatientID, Longitude, Latitude) VALUES (" + patientID + "," + location.Longitude + "," + location.Latitude + ");");
+            }
+            catch
+            {
+                return BadRequest();
+            }
+            return Ok();
+        }
+
         // POST: api/Patients
         [ResponseType(typeof(Patient))]
         public IHttpActionResult PostPatient(Patient patient)

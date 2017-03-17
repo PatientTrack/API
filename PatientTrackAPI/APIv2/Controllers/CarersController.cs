@@ -167,11 +167,27 @@ namespace APIv2.Controllers
             {
                 return NotFound();
             }
-
+            db.Database.ExecuteSqlCommand("DELETE FROM CarerPatient WHERE CarerID = " + carer.CarerID + ";");
             db.Carers.Remove(carer);
             db.SaveChanges();
 
             return Ok(carer);
+        }
+
+        // DELETE: api/Carers/1/AddPatient/abc123
+        [Route("api/Carers/{carerID}/DeletePatient/{patientID}")]
+        [ResponseType(typeof(void))]
+        public IHttpActionResult DeleteCarerPatient(int carerID, int patientID)
+        {
+            try
+            {
+                db.Database.ExecuteSqlCommand("DELETE FROM CarerPatient WHERE CarerID = " + carerID + " AND PatientID = " + patientID + ";");
+            }
+            catch
+            {
+                return BadRequest();
+            }
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)
