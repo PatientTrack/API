@@ -157,6 +157,13 @@ namespace APIv2.Controllers
                 return NotFound();
             }
 
+            List<Location> patientLocations = (from l in db.Locations
+                                               where l.PatientID == patient.PatientID
+                                               select l).ToList();
+            foreach (Location loc in patientLocations)
+            {
+                db.Locations.Remove(loc);
+            }
             db.Patients.Remove(patient);
             db.SaveChanges();
 

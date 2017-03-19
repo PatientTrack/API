@@ -89,3 +89,4 @@ C:\Users\Joe\Documents\University\Year4\FYP\PatientTrack\API\PatientTrackAPI\API
 C:\Users\Joe\Documents\University\Year4\FYP\PatientTrack\API\PatientTrackAPI\APIv2\bin\System.Web.Http.Owin.xml
 C:\Users\Joe\Documents\University\Year4\FYP\PatientTrack\API\PatientTrackAPI\APIv2\obj\Debug\APIv2.dll
 C:\Users\Joe\Documents\University\Year4\FYP\PatientTrack\API\PatientTrackAPI\APIv2\obj\Debug\APIv2.pdb
+C:\Users\Joe\Documents\University\Year4\FYP\PatientTrack\API\PatientTrackAPI\APIv2\obj\Debug\APIv2.csprojResolveAssemblyReference.cache
