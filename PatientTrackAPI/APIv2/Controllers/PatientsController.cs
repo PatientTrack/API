@@ -110,7 +110,7 @@ namespace APIv2.Controllers
                 }
                 else
                 {
-                    throw;
+                    return BadRequest();
                 }
             }
 

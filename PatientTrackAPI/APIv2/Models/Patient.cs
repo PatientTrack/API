@@ -23,7 +23,6 @@ namespace APIv2.Models
     
         public int PatientID { get; set; }
         public string PatientFName { get; set; }
-        public string PatientSName { get; set; }
         public string PatientEmail { get; set; }
         public string PatientPwd { get; set; }
         public string PatientPostcode { get; set; }

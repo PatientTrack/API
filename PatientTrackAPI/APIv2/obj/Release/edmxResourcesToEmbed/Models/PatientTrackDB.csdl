@@ -29,7 +29,7 @@
     <Property Name="PatientFName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PatientEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PatientPwd" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="PatientPostcode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PatientPostcode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PatientCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Locations" Relationship="Self.FK__Location__Patien__59063A47" FromRole="Patient" ToRole="Location" />
     <NavigationProperty Name="Carers" Relationship="Self.CarerPatient" FromRole="Patient" ToRole="Carer" />

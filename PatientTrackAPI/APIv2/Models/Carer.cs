@@ -22,7 +22,6 @@ namespace APIv2.Models
     
         public int CarerID { get; set; }
         public string CarerFName { get; set; }
-        public string CarerSName { get; set; }
         public string CarerEmail { get; set; }
         public string CarerPwd { get; set; }
     

@@ -35,7 +35,7 @@
     <Property Name="PatientFName" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="PatientEmail" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="PatientPwd" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="PatientPostcode" Type="varchar" MaxLength="10" />
+    <Property Name="PatientPostcode" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="PatientCode" Type="varchar" MaxLength="10" Nullable="false" />
   </EntityType>
   <Association Name="FK__CarerPati__Carer__5CD6CB2B">
